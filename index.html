@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-end Dinâmico 02</title>
+    <link rel="stylesheet" href="./css/globals.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet" href="./css/list.css">
+    <script src="./scripts/lib.js"></script>
+    <script defer src="./scripts/main.js"></script>
+</head>
+
+<body>
+    <main>
+        <form id="form" class="form-addtask" action="/index.html">
+            <h1 class="form-row">Criar tarefa</h1>
+            <hr class="form-row">
+
+            <label for="task-title" class="form-row">Título:</label>
+            <input type="text" id="task-title" class="form-row" placeholder="Título da tarefa">
+
+            <label for="task-description" class="form-row">Descrição:</label>
+            <textarea name="" id="task-description" cols="30" rows="4" class="form-row"
+                placeholder="Descrição da tarefa (máx: 250)"></textarea>
+
+            <fieldset class="form-row">
+                <legend>Objetivos:</legend>
+
+                <span class="form-row">
+                    <input type="text" id="task-addlist-text" class="flex-grow-1" placeholder="Digite uma tarefa">
+                    <button type="button" id="task-addlist-button">+</button>
+                </span>
+
+                <ul id="task-addlist-list">
+                </ul>
+            </fieldset>
+            <button type="button" class="form-row" id="form-submit">Adicionar</button>
+        </form>
+        <aside id="tasks">
+            <h1>Tarefas</h1>
+            <hr>
+            <div id="task-container">
+
+            </div>
+        </aside>
+    </main>
+</body>
+
+</html>
