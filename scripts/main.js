@@ -44,7 +44,6 @@ submitButton.addEventListener('click', (ev) => {
                     </ul>
                 `
     element.innerHTML = output;
-    console.log(objectives)
 
     objectives.forEach((el) => {
         const el_clean = el;

@@ -1,10 +1,19 @@
-form{
+main>div{
+    min-height: 100vh;
+    min-width: 20vw;
+}
+
+main form{
     background-color: rgb(255, 255, 255);
+    
+    width: 20vw;
     max-width: 20vw;
+
     min-height: 100vh;
     max-height: 100vh;
     padding: 2.5rem;
 
+    
     border: 1px inset var(--border-color-primary);
     box-shadow: 3px 5px 6px rgba(0,0,0,0.4);
     display: flex;
