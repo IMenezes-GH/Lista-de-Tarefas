@@ -1,15 +1,20 @@
 form{
     background-color: rgb(255, 255, 255);
-    max-width: fit-content;
+    max-width: 20vw;
+    min-height: 100vh;
+    max-height: 100vh;
     padding: 2.5rem;
 
     border: 1px inset var(--border-color-primary);
     box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
     display: flex;
+    position: fixed;
     flex-direction: column;
 
     justify-content: flex-start;
     align-items: safe;
+
+    overflow-y: scroll;
 
     gap: 1rem;
 
@@ -24,7 +29,7 @@ form{
             justify-content: space-between;
             gap: .5rem;
         }
-
+        
         &>ul{
             margin-top: 1rem;
 
@@ -33,6 +38,7 @@ form{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                word-break: break-all;
                 
                 & input[type="checkbox"]{
                     margin-right: .25rem;

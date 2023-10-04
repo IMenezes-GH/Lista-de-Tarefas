@@ -81,6 +81,7 @@ button{
 
 input, textarea{
     padding: .5rem;
+    resize: vertical;
 }
 
 .button-remove{
