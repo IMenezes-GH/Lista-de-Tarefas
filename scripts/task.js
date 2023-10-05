@@ -56,6 +56,10 @@ class Task{
 
     }
 
+    /**
+     * Returns all of the local tasks
+     * @returns {Array<Task>}
+     */
     static getTasks(){
         
         const tasksArray = [];

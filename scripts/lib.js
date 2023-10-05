@@ -1,3 +1,3 @@
 const removeTask = function(el){
-    taskList.removeChild(el.parentElement)
+    formTaskList.removeChild(el.parentElement)
 }
