@@ -16,7 +16,7 @@ const taskContainer = document.getElementById("task-container");
 
 
 // LOAD STORAGE
-getStoredNotes();
+loadTasks();
 updateCheckboxes();
 
 //* EVENT FOR HANDLING ADDING LIST ITEMS BEFORE SUBMIT
@@ -24,14 +24,12 @@ taskButton.addEventListener('click', (ev) => {
 
     if (taskText.value.trim() === '') return;
 
-    const element = document.createElement("li");
-    const output = `<span><input type="checkbox"> </span><button type="button" class="button-remove">Remover</button>`
+    const formLI = document.createElement("li");
 
-    element.innerHTML = output;
-    element.firstChild.appendChild(document.createTextNode(taskText.value));
+    formLI.innerHTML = `<span><input type="checkbox"> </span><button type="button" class="button-remove" onclick="removeTask(this)">Remover</button>`;
+    formLI.firstChild.appendChild(document.createTextNode(taskText.value));
 
-    taskList.appendChild(element);
-    updateButtons();
+    taskList.appendChild(formLI);
 
     taskText.value = '';
     taskText.focus();
@@ -42,25 +40,22 @@ submitButton.addEventListener('click', (ev) => {
 
     if (taskTitle.value === undefined || taskTitle.value.trim() === '') return;
 
-    const creationDate = new Date();
+    const objectivesArray = [];
 
-    const objectives = document.querySelectorAll("#task-addlist-list li>span");
-    let taskListString = [];
+    document.querySelectorAll("#task-addlist-list li>span").forEach((element) => {
+        objectivesArray.push(
+            {
+            title: element.innerText.trim(),
+            checked: element.querySelector('input[type="checkbox"]').checked
+            }
+        )
+    })
 
-    for (let i = 0; i < objectives.length; i++) {
-            
-        const listItem = objectives[i];
-        const isDone = () => Boolean(listItem.firstChild.checked);
-        taskListString.push((isDone() ? '[t]' : '[f]') + listItem.innerText.trim());
-    }
-
-    const datetime = creationDate.toLocaleDateString() + ' ' + creationDate.toLocaleTimeString();
-
-    const element = createArticle(taskTitle.value, taskDescription.value, taskListString, datetime)
-    taskContainer.appendChild(element);
+    const task = new Task(taskTitle.value, taskDescription.value, objectivesArray);
+    taskContainer.appendChild(task.createTaskElement());
 
     form.reset();
     taskList.replaceChildren();
     updateCheckboxes();
-    storeNotes();
+    storeTasks();
 })

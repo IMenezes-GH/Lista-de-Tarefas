@@ -55,4 +55,8 @@ aside{
         margin-left: 2rem;
         list-style-type: '- ';
     }
+
+    & input[type="checkbox"]{
+        margin-right: .5rem;
+    }
 }

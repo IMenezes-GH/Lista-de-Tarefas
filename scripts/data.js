@@ -1,48 +1,23 @@
 
-function getStoredNotes(){
+function storeTasks() {
+    const tasks = Task.getTasks();
+    const tasksObject = {}
 
-    const notesString = localStorage.getItem("frontEndNotesStorage");
-    if (!notesString) return;
-
-    const notes = notesString.split(/\|/g).filter(Boolean);
-
-    notes.forEach((val) => {
-        const note = val.split(/\&/g);
-        const title = note[0];
-        const desc = note[1];
-        const date = note[note.length - 1];
-        const tasks = note.filter((val, index) => index >= 2 && index < note.length - 1);
-
-        const dateFormat = new Date(date);
-        const article = createArticle(title, desc, tasks, `${dateFormat.toLocaleDateString()} ${dateFormat.toLocaleTimeString()}`);
-        taskContainer.appendChild(article);
-    })
+    for (let i = 0; i < tasks.length; i++){
+        const task = tasks[i]
+        tasksObject[i] = {order: i, title: task.title, description: task.description, datetime: task.creationDate, objectives: task.objectives};
+    }   
+    
+    localStorage.setItem("tarefas", JSON.stringify(tasksObject))
 }
 
-function storeNotes() {
-    const notes = getNotes();
-    let notesString = '';
-
-    notes.forEach((note) => {
-
-        const title = note.querySelector("h2>span").innerText.trim();
-        const description = note.querySelector("p").innerText.trim();
-        const date = note.querySelector("h2").lastChild.innerText.trim();
-        notesString += title + '&' + description;
-
-        const ulList = note.querySelector("ul");
-
-        for (let i = 0; i < ulList.children.length; i++) {
-            
-            const listItem = ulList.children[i]
-            const isDone = () => Boolean(listItem.firstChild.checked);
-        
-            notesString += '&' + (isDone() ? '[t]' : '[f]') + listItem.innerText.trim();
-        }
-        notesString += `&${date}|`;
+function loadTasks() {
+    const tasks = JSON.parse(localStorage.getItem("tarefas"));
+    
+    Object.keys(tasks).forEach((index) => {
+        const t = tasks[index];
+        const task = new Task(t.title, t.description, t.objectives, t.datetime);
+        taskContainer.appendChild(task.createTaskElement());
     })
-    notesString = notesString.substring(0, notesString.length - 1);
-    localStorage.setItem("frontEndNotesStorage", notesString);
-    return(notesString);
-}
 
+}
