@@ -60,6 +60,7 @@ submitButton.addEventListener('click', (ev) => {
     taskContainer.appendChild(element);
 
     form.reset();
+    taskList.replaceChildren();
     updateCheckboxes();
     storeNotes();
 })
