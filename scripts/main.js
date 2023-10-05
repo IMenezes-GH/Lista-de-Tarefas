@@ -19,6 +19,7 @@ const taskContainer = document.getElementById("task-container");
 getStoredNotes();
 updateCheckboxes();
 
+//* EVENT FOR HANDLING ADDING LIST ITEMS BEFORE SUBMIT
 taskButton.addEventListener('click', (ev) => {
 
     if (taskText.value.trim() === '') return;
@@ -36,14 +37,20 @@ taskButton.addEventListener('click', (ev) => {
     taskText.focus();
 })
 
+// EVENT TO HANDLE FORM SUBMISSION
 submitButton.addEventListener('click', (ev) => {
+
+    if (taskTitle.value === undefined || taskTitle.value.trim() === '') return;
+
+    const creationDate = new Date();
 
     const objectives = document.querySelectorAll("#task-addlist-list li");
     const element = document.createElement("article");
+    const datetime = creationDate.toLocaleDateString() + ' ' + creationDate.toLocaleTimeString();
     element.classList.add("aside-task-article");
 
     const output = `
-                    <h2>${taskTitle.value}</h2>
+                    <h2><span>${taskTitle.value}</span><span class="font-light font-75">${datetime}<span></h2>
                     <p>${taskDescription.value}</p>
                     <ul>
                     </ul>

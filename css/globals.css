@@ -139,3 +139,10 @@ textarea {
 .hr-40 {
     width: 40%;
 }
+
+.font-light{
+    font-weight: 200;
+}
+.font-75{
+    font-size: 75%;
+}

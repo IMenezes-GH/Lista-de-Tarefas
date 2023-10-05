@@ -20,13 +20,13 @@ function getNotes() {
     return notes;
 }
 
-function createArticle(title, description, taskListArray) {
+function createArticle(title, description, taskListArray, date) {
     const article = document.createElement("article");
     article.classList.add("aside-task-article");
 
     const output =
         `
-    <h2>${title}</h2>
+    <h2><span>${title}</span><span class="font-light font-75">${date}<span></h2>
     <p>${description}</p>
     <ul>
     </ul>
