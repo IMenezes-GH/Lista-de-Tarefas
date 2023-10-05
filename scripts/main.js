@@ -19,6 +19,7 @@ const taskContainer = document.getElementById("task-container");
 getStoredNotes();
 updateCheckboxes();
 
+//* EVENT FOR HANDLING ADDING LIST ITEMS BEFORE SUBMIT
 taskButton.addEventListener('click', (ev) => {
 
     if (taskText.value.trim() === '') return;
@@ -36,30 +37,30 @@ taskButton.addEventListener('click', (ev) => {
     taskText.focus();
 })
 
+// EVENT TO HANDLE FORM SUBMISSION
 submitButton.addEventListener('click', (ev) => {
 
-    const objectives = document.querySelectorAll("#task-addlist-list li");
-    const element = document.createElement("article");
-    element.classList.add("aside-task-article");
+    if (taskTitle.value === undefined || taskTitle.value.trim() === '') return;
 
-    const output = `
-                    <h2>${taskTitle.value}</h2>
-                    <p>${taskDescription.value}</p>
-                    <ul>
-                    </ul>
-                `
-    element.innerHTML = output;
+    const creationDate = new Date();
 
-    objectives.forEach((el) => {
-        const el_clean = el;
-        el_clean.removeChild(el_clean.children[1])
-        element.children[2].appendChild(el_clean);
-    })
+    const objectives = document.querySelectorAll("#task-addlist-list li>span");
+    let taskListString = [];
 
+    for (let i = 0; i < objectives.length; i++) {
+            
+        const listItem = objectives[i];
+        const isDone = () => Boolean(listItem.firstChild.checked);
+        taskListString.push((isDone() ? '[t]' : '[f]') + listItem.innerText.trim());
+    }
 
+    const datetime = creationDate.toLocaleDateString() + ' ' + creationDate.toLocaleTimeString();
+
+    const element = createArticle(taskTitle.value, taskDescription.value, taskListString, datetime)
     taskContainer.appendChild(element);
 
     form.reset();
+    taskList.replaceChildren();
     updateCheckboxes();
     storeNotes();
 })

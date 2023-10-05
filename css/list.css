@@ -31,12 +31,18 @@ aside{
 
     border-left: none;
     border-right: none;
-
+    padding-right: 1.75rem;
     
     padding-left: 2rem;
     
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
+
+    &>h2{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     
     & p {
         width: 80%;
