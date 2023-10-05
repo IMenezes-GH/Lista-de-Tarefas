@@ -14,6 +14,11 @@ let taskButtons = document.getElementsByClassName("button-remove");
 const submitButton = document.getElementById("form-submit");
 const taskContainer = document.getElementById("task-container");
 
+
+// LOAD STORAGE
+getStoredNotes();
+updateCheckboxes();
+
 taskButton.addEventListener('click', (ev) => {
 
     if (taskText.value.trim() === '') return;
@@ -55,5 +60,6 @@ submitButton.addEventListener('click', (ev) => {
     taskContainer.appendChild(element);
 
     form.reset();
+    updateCheckboxes();
+    storeNotes();
 })
-// Update removeButton lists
