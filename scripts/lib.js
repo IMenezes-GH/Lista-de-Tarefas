@@ -34,7 +34,7 @@ function createArticle(title, description, taskListArray, dateString) {
 
     for (let i = 0; i < taskListArray.length; i++){
         const liItem = document.createElement("li");
-        liItem.innerHTML = taskListArray[i];
+        liItem.innerHTML = `<input ${taskListArray[i].charAt(1) === 't' ? 'checked ' : ' '}type="checkbox"> ${taskListArray[i].substring(3)}`;
         article.children[2].appendChild(liItem);
     }
 

@@ -11,11 +11,8 @@ function getStoredNotes(){
         const title = note[0];
         const desc = note[1];
         const date = note[note.length - 1];
-        const tasks = []
+        const tasks = note.filter((val, index) => index >= 2 && index < note.length - 1);
 
-        for (let i = 2; i < note.length - 1; i++){
-            tasks.push(`<span><input ${note[i].charAt(1) === 't' ? 'checked ' : ''}type="checkbox"> ${note[i].substring(3)}</span>`);
-        }
         const dateFormat = new Date(date);
         const article = createArticle(title, desc, tasks, `${dateFormat.toLocaleDateString()} ${dateFormat.toLocaleTimeString()}`);
         taskContainer.appendChild(article);
@@ -27,16 +24,19 @@ function storeNotes() {
     let notesString = '';
 
     notes.forEach((note) => {
+
         const title = note.querySelector("h2>span").innerText.trim();
         const description = note.querySelector("p").innerText.trim();
         const date = note.querySelector("h2").lastChild.innerText.trim();
         notesString += title + '&' + description;
 
-        const ulList = note.children[2];
+        const ulList = note.querySelector("ul");
 
         for (let i = 0; i < ulList.children.length; i++) {
+            
             const listItem = ulList.children[i]
-            const isDone = () => Boolean(listItem.firstChild.firstChild.checked);
+            const isDone = () => Boolean(listItem.firstChild.checked);
+        
             notesString += '&' + (isDone() ? '[t]' : '[f]') + listItem.innerText.trim();
         }
         notesString += `&${date}|`;
