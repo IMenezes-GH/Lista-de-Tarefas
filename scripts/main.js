@@ -9,7 +9,6 @@ const form = document.getElementById("form");
 const taskList = document.getElementById("task-addlist-list");
 const taskText = document.getElementById("task-addlist-text");
 const taskButton = document.getElementById("task-addlist-button");
-let taskButtons = document.getElementsByClassName("button-remove");
 
 const submitButton = document.getElementById("form-submit");
 const taskContainer = document.getElementById("task-container");
@@ -17,7 +16,6 @@ const taskContainer = document.getElementById("task-container");
 
 // LOAD STORAGE
 loadTasks();
-updateCheckboxes();
 
 //* EVENT FOR HANDLING ADDING LIST ITEMS BEFORE SUBMIT
 taskButton.addEventListener('click', (ev) => {
@@ -56,6 +54,5 @@ submitButton.addEventListener('click', (ev) => {
 
     form.reset();
     taskList.replaceChildren();
-    updateCheckboxes();
     storeTasks();
 })

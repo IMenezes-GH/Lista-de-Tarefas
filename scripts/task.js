@@ -46,6 +46,7 @@ class Task{
             objective.appendChild(document.createElement('input'));
             objective.firstChild.type = 'checkbox';
             objective.firstChild.checked = Boolean(val.checked);
+            objective.firstChild.onchange = storeTasks;
             objective.appendChild(document.createTextNode(val.title.trim()));
 
             article.querySelector("ul").appendChild(objective);

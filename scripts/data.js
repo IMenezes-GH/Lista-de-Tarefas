@@ -19,5 +19,4 @@ function loadTasks() {
         const task = new Task(t.title, t.description, t.objectives, t.datetime);
         taskContainer.appendChild(task.createTaskElement());
     })
-
 }
