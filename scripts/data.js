@@ -16,8 +16,8 @@ function getStoredNotes(){
         for (let i = 2; i < note.length - 1; i++){
             tasks.push(`<span><input ${note[i].charAt(1) === 't' ? 'checked ' : ''}type="checkbox"> ${note[i].substring(3)}</span>`);
         }
-
-        const article = createArticle(title, desc, tasks, date);
+        const dateFormat = new Date(date);
+        const article = createArticle(title, desc, tasks, `${dateFormat.toLocaleDateString()} ${dateFormat.toLocaleTimeString()}`);
         taskContainer.appendChild(article);
     })
 }
@@ -28,8 +28,8 @@ function storeNotes() {
 
     notes.forEach((note) => {
         const title = note.querySelector("h2>span").innerText.trim();
-        const description = note.children[1].innerText.trim();
-        const date = note.children[0].lastChild.innerText.trim();
+        const description = note.querySelector("p").innerText.trim();
+        const date = note.querySelector("h2").lastChild.innerText.trim();
         notesString += title + '&' + description;
 
         const ulList = note.children[2];

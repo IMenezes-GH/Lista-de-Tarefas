@@ -45,25 +45,25 @@ submitButton.addEventListener('click', (ev) => {
     const creationDate = new Date();
 
     const objectives = document.querySelectorAll("#task-addlist-list li");
-    const element = document.createElement("article");
     const datetime = creationDate.toLocaleDateString() + ' ' + creationDate.toLocaleTimeString();
-    element.classList.add("aside-task-article");
+    // const element = document.createElement("article");
+    // element.classList.add("aside-task-article");
 
-    const output = `
-                    <h2><span>${taskTitle.value}</span><span class="font-light font-75">${datetime}<span></h2>
-                    <p>${taskDescription.value}</p>
-                    <ul>
-                    </ul>
-                `
-    element.innerHTML = output;
+    // const output = `
+    //                 <h2><span>${taskTitle.value}</span><span class="font-light font-75">${datetime}<span></h2>
+    //                 <p>${taskDescription.value}</p>
+    //                 <ul>
+    //                 </ul>
+    //             `
+    // element.innerHTML = output;
 
-    objectives.forEach((el) => {
-        const el_clean = el;
-        el_clean.removeChild(el_clean.children[1])
-        element.children[2].appendChild(el_clean);
-    })
+    // objectives.forEach((el) => {
+    //     const el_clean = el;
+    //     el_clean.removeChild(el_clean.children[1])
+    //     element.children[2].appendChild(el_clean);
+    // })
 
-
+    const element = createArticle(taskTitle.value, taskDescription.value, objectives, datetime)
     taskContainer.appendChild(element);
 
     form.reset();

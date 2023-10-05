@@ -20,19 +20,17 @@ function getNotes() {
     return notes;
 }
 
-function createArticle(title, description, taskListArray, date) {
+function createArticle(title, description, taskListArray, dateString) {
     const article = document.createElement("article");
     article.classList.add("aside-task-article");
 
-    const output =
+    article.innerHTML =
         `
-    <h2><span>${title}</span><span class="font-light font-75">${date}<span></h2>
+    <h2><span>${title}</span><span class="font-light font-75">${dateString}<span></h2>
     <p>${description}</p>
     <ul>
     </ul>
     `
-
-    article.innerHTML = output;
 
     for (let i = 0; i < taskListArray.length; i++){
         const liItem = document.createElement("li");
