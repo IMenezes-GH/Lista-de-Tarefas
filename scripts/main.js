@@ -6,21 +6,19 @@ const taskDescription = document.getElementById("task-description");
 const form = document.getElementById("form");
 
 // TO-DO LIST
-const taskList = document.getElementById("task-addlist-list");
+const formTaskList = document.getElementById("task-addlist-list");
 const taskText = document.getElementById("task-addlist-text");
-const taskButton = document.getElementById("task-addlist-button");
-let taskButtons = document.getElementsByClassName("button-remove");
-
 const submitButton = document.getElementById("form-submit");
+
 const taskContainer = document.getElementById("task-container");
 
 
 // LOAD STORAGE
 loadTasks();
-updateCheckboxes();
 
 //* EVENT FOR HANDLING ADDING LIST ITEMS BEFORE SUBMIT
-taskButton.addEventListener('click', (ev) => {
+const formAddButton = document.getElementById("task-addlist-button");
+formAddButton.onclick = () => {
 
     if (taskText.value.trim() === '') return;
 
@@ -29,18 +27,17 @@ taskButton.addEventListener('click', (ev) => {
     formLI.innerHTML = `<span><input type="checkbox"> </span><button type="button" class="button-remove" onclick="removeTask(this)">Remover</button>`;
     formLI.firstChild.appendChild(document.createTextNode(taskText.value));
 
-    taskList.appendChild(formLI);
+    formTaskList.appendChild(formLI);
 
     taskText.value = '';
     taskText.focus();
-})
+}
 
 // EVENT TO HANDLE FORM SUBMISSION
-submitButton.addEventListener('click', (ev) => {
-
+submitButton.onclick = () => {
     if (taskTitle.value === undefined || taskTitle.value.trim() === '') return;
-
     const objectivesArray = [];
+
 
     document.querySelectorAll("#task-addlist-list li>span").forEach((element) => {
         objectivesArray.push(
@@ -55,7 +52,6 @@ submitButton.addEventListener('click', (ev) => {
     taskContainer.appendChild(task.createTaskElement());
 
     form.reset();
-    taskList.replaceChildren();
-    updateCheckboxes();
+    formTaskList.replaceChildren();
     storeTasks();
-})
+}
