@@ -53,13 +53,19 @@ class Task {
         article.innerHTML =
             `
         <div class="relative-wrapper"><img role="button" onclick="openDeleteDialog(this)" class="close-img" src="./assets/close.svg"></div>
-        <h2><span>${this.#title}</span><span class="font-light font-75">${this.#creationDate.toLocaleString()}</span></h2>
-        <p>${this.#description}</p>
+        <h2><span></span><span class="font-light font-75">${this.#creationDate.toLocaleString()}</span></h2>
+        <p></p>
         <ul></ul>
         `
 
-        this.objectives.map((val, index) => {
+        article.querySelector("h2 span:first-child").innerText = this.#title;
+        article.querySelector("p").innerText = this.#description;
+
+        // Criação de lista de objetivos
+        this.objectives.map((val) => {
+
             const objective = document.createElement('li');
+
             objective.appendChild(document.createElement('input'));
             objective.firstChild.type = 'checkbox';
             objective.firstChild.checked = Boolean(val.checked);
@@ -68,29 +74,27 @@ class Task {
             article.querySelector("ul").appendChild(objective);
         })
 
-        article.onmouseenter = () => {
-            article.querySelector("img").classList.add("opacity-60")
-        };
-        article.onmouseleave = () => {
-            article.querySelector("img").classList.remove("opacity-60")
-        };
 
+        // Adiciona hover do botão para excluir tarefas
+        article.onmouseenter = () => article.querySelector("img").classList.add("opacity-60");
+        article.onmouseleave = () => article.querySelector("img").classList.remove("opacity-60");
+
+
+        // Eventos abaixos adiciona capacidade para editar título e descrição
         article.querySelector("h2 > span:first-child").onclick = (ev) => {
-            const editValue = ev.target;
-            editValue.innerHTML = `<input type="text" value="${ev.target.innerText}">`
-            editValue.onblur = (ev) => {
-
-                article.querySelector("h2 > span:first-child").innerHTML = ev.target.value;
+      
+            ev.target.innerHTML = `<input type="text" value="${ev.target.innerText}">`            
+            ev.target.onblur = (ev) => {
+                ev.target.parentElement.innerText = ev.target.value;
                 this.title = ev.target.value;
             }
         }
 
         article.querySelector("p").onclick = (ev) => {
-            const editValue = ev.target;
-            editValue.innerHTML = `<input type="text" value="${ev.target.innerText}">`
-            editValue.onblur = (ev) => {
-
-                article.querySelector("p").innerHTML = ev.target.value;
+         
+            ev.target.innerHTML = `<input type="text" value="${ev.target.innerText}">`
+            ev.target.onblur = (ev) => {
+                ev.target.parentElement.innerText = ev.target.value;
                 this.description = ev.target.value;
             }
         }
