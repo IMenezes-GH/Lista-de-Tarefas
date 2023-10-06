@@ -45,6 +45,23 @@ aside{
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
 
+    & div.relative-wrapper{
+        position: relative;
+        
+        & img.close-img{
+            cursor: pointer;
+            height: 1rem;
+            position: absolute;
+            margin-left: 95%;
+            top: -1rem;
+            opacity: 0%;
+
+            &:hover{
+                opacity: 100%;
+            }
+        }
+    }
+
     &>h2{
         display: flex;
         align-items: center;
@@ -52,11 +69,11 @@ aside{
     }
     
     & p {
+    
         width: 80%;
         word-break: break-all;
         margin: .5rem 0;
     }
-
 
     & ul{
         margin-left: 2rem;
@@ -65,5 +82,26 @@ aside{
 
     & input[type="checkbox"]{
         margin-right: .5rem;
+    }
+
+    & h2 > span:last-child{
+        cursor: default;
+    }
+
+    p, h2>span:first-child{
+        cursor:pointer;
+
+        &>input[type="text"]{
+            width: 100%;
+            resize: both;
+        }
+        &:hover::after{
+            content: "🖉";
+            font-size: 0.55rem;
+            font-weight: 200;
+            position: relative;
+            top: -.9rem;
+            left: .7rem;
+        }
     }
 }
