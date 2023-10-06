@@ -7,10 +7,6 @@ class Modal {
         return this.createDialogElement()
     }
 
-    static dialogCancel(el) {
-        el.close();
-    }
-
     createDialogElement() {
 
         const dialog = document.createElement("dialog");
