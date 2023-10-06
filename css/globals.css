@@ -157,3 +157,7 @@ textarea {
 .font-75{
     font-size: 75%;
 }
+
+.opacity-100{
+    opacity: 100% !important;
+}
