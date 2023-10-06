@@ -91,6 +91,10 @@ aside{
     p, h2>span:first-child{
         cursor:pointer;
 
+        &>input[type="text"]{
+            width: 100%;
+            resize: both;
+        }
         &:hover::after{
             content: "🖉";
             font-size: 0.55rem;

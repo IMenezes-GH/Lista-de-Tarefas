@@ -80,7 +80,7 @@ class Task {
         article.onmouseleave = () => article.querySelector("img").classList.remove("opacity-60");
 
 
-        // Eventos abaixos adiciona capacidade para editar título e descrição
+        // Eventos abaixos adiciona capacidade para edição de título e descrição
         article.querySelector("h2 > span:first-child").onclick = (ev) => {
       
             ev.target.innerHTML = `<input type="text" value="${ev.target.innerText}">`            
