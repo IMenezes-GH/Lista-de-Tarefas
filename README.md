@@ -1,6 +1,11 @@
-# Lista de tarefas
+# [Lista de tarefas](https://imenezes-gh.github.io/Lista-de-Tarefas/)
 
-Uma página simples para criação de notas ou tarefas.
+Uma página web simples para criação de tarefas.
 
 HTML/CSS/Javascript vanilla
-Dados persistentes localmente por localStorage
+Dados persistentes armazenados localmente por localStorage
+
+### Demonstração
+
+<img src="./docs/page_empty.png">
+<img src="./docs/page_dialog.png">
