@@ -45,6 +45,23 @@ aside{
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
 
+    & div.relative-wrapper{
+        position: relative;
+        
+        & img.close-img{
+            cursor: pointer;
+            height: 1rem;
+            position: absolute;
+            margin-left: 95%;
+            top: -1rem;
+            opacity: 0%;
+
+            &:hover{
+                opacity: 100%;
+            }
+        }
+    }
+
     &>h2{
         display: flex;
         align-items: center;

@@ -36,6 +36,7 @@ class Task{
         article.classList.add('aside-task-article');
         article.innerHTML = 
         `
+        <div class="relative-wrapper"><img role="button" onclick="openDeleteDialog(this)" class="close-img" src="./assets/close.svg"></div>
         <h2><span>${this.#title}</span><span class="font-light font-75">${this.#creationDate.toLocaleString()}</span></h2>
         <p>${this.#description}</p>
         <ul></ul>
@@ -48,7 +49,6 @@ class Task{
             objective.firstChild.checked = Boolean(val.checked);
             objective.firstChild.onchange = storeTasks;
             objective.appendChild(document.createTextNode(val.title.trim()));
-
             article.querySelector("ul").appendChild(objective);
         })
 

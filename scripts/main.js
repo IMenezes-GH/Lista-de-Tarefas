@@ -11,7 +11,7 @@ const taskText = document.getElementById("task-addlist-text");
 const submitButton = document.getElementById("form-submit");
 
 const taskContainer = document.getElementById("task-container");
-
+const dialogContainer = document.getElementById("dialog-container");
 
 // LOAD STORAGE
 loadTasks();
@@ -54,4 +54,12 @@ submitButton.onclick = () => {
     form.reset();
     formTaskList.replaceChildren();
     storeTasks();
+}
+
+const openDeleteDialog = (task) => {
+
+    const confirm = new Modal(task, 'deleteTask');
+    dialogContainer.appendChild(confirm)
+    confirm.showModal();
+
 }

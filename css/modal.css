@@ -1,0 +1,28 @@
+dialog{
+    margin: auto;
+    width: 25rem;
+    border: 0px;
+    padding: 2.5rem;
+
+
+    background-color: rgb(8, 11, 14);
+    border: 1px inset rgba(125, 134, 175, 0.616);
+    box-shadow: 3px 5px 6px rgba(0,0,0,0.4);
+    text-align: center;
+
+    & h1, p{
+        color: white;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    & .button-wrapper{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        & button {
+            flex-grow: 1;
+        }
+    }
+}
