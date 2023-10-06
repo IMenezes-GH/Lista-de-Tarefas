@@ -1,4 +1,4 @@
-class Modal{
+class Modal {
 
     constructor(task, modalType) {
         this.task = task.parentElement.parentElement;
@@ -31,11 +31,15 @@ class Modal{
                 `
                 dialog.querySelector("button.button-cancel").addEventListener('click', () => {
                     dialog.close();
+                    dialogContainer.removeChild(dialog);
                 })
 
                 dialog.querySelector("button:last-of-type").addEventListener("click", () => {
+
                     taskContainer.removeChild(this.task);
+
                     dialog.close();
+                    dialogContainer.removeChild(dialog);
                     storeTasks();
                 })
 
