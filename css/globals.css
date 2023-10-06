@@ -161,3 +161,7 @@ textarea {
 .opacity-100{
     opacity: 100% !important;
 }
+
+.opacity-60{
+    opacity: 60% !important;
+}

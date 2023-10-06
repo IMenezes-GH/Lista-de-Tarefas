@@ -52,8 +52,8 @@ class Task{
             article.querySelector("ul").appendChild(objective);
         })
 
-        article.onmouseenter = () => {article.querySelector("img").classList.add("opacity-100")};
-        article.onmouseleave = () => {article.querySelector("img").classList.remove("opacity-100")};
+        article.onmouseenter = () => {article.querySelector("img").classList.add("opacity-60")};
+        article.onmouseleave = () => {article.querySelector("img").classList.remove("opacity-60")};
 
         return article;
 
